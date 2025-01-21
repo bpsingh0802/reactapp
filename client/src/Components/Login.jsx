@@ -10,10 +10,10 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post("http://reactapp-qdzf.vercel.app/login", { email, password }, { withCredentials: true })
+        axios.post("https://reactapp-qdzf.vercel.app/login", { email, password }, { withCredentials: true })
             .then(result => {
                 if (result.data === "Success") {
-                    axios.get("http://reactapp-qdzf.vercel.app/user", { withCredentials: true })
+                    axios.get("https://reactapp-qdzf.vercel.app/user", { withCredentials: true })
                         .then(response => {
                             if (response.data.user) {
                                 navigate('/homepage', { state: { user: response.data.user } });
