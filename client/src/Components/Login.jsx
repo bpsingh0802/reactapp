@@ -10,7 +10,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3001/login", { email, password }, { withCredentials: true })
+        axios.post("http://reactapp-qdzf.vercel.app/login", { email, password }, { withCredentials: true })
             .then(result => {
                 if (result.data === "Success") {
                     axios.get("http://localhost:3001/user", { withCredentials: true })
