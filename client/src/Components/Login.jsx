@@ -13,7 +13,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
         axios.post("http://reactapp-qdzf.vercel.app/login", { email, password }, { withCredentials: true })
             .then(result => {
                 if (result.data === "Success") {
-                    axios.get("http://localhost:3001/user", { withCredentials: true })
+                    axios.get("http://reactapp-qdzf.vercel.app/user", { withCredentials: true })
                         .then(response => {
                             if (response.data.user) {
                                 navigate('/homepage', { state: { user: response.data.user } });
