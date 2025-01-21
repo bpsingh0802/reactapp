@@ -7,7 +7,7 @@ function Logout({ setIsLoggedIn }) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        axios.post("https://localhost:3001/logout", {}, { withCredentials: true })
+        axios.post("https://reactapp-qdzf.vercel.app/signup", {}, { withCredentials: true })
             .then(response => {
                 if (response.status === 200) {
                     setIsLoggedIn(false);
