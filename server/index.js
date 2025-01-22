@@ -12,12 +12,14 @@ const path = require('path');
 
 
 dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(cors({
     origin: 'https://reactapp-c6wk.vercel.app', // Add a comma here
     credentials: true,
 }));
+
 
 
 mongoose.connect(process.env.MONGO_URI)
