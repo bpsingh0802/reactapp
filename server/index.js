@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: 'http:s//reactapp-c6wk.vercel.app/', // Replace with your frontend's URL
+    origin: 'https://reactapp-c6wk.vercel.app/', // Replace with your frontend's URL
     credentials: true
 }));
 
