@@ -65,34 +65,43 @@ const upload = multer({
 });
 
 // Routes
-app.post("/signup", upload.array("images", 5), async (req, res) => {
-    try {
-        const { name, email, password, twitterHandle, instagramHandle } = req.body;
+// app.post("/signup", upload.array("images", 5), async (req, res) => {
+//     try {
+//         const { name, email, password, twitterHandle, instagramHandle } = req.body;
 
-        const existingUser = await UserModel.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ error: "Email already exists" });
-        }
+//         const existingUser = await UserModel.findOne({ email });
+//         if (existingUser) {
+//             return res.status(400).json({ error: "Email already exists" });
+//         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const imagePaths = req.files ? req.files.map(file => file.path) : [];
+//         const hashedPassword = await bcrypt.hash(password, 10);
+//         const imagePaths = req.files ? req.files.map(file => file.path) : [];
 
-        const newUser = new UserModel({
-            name,
-            email,
-            password: hashedPassword,
-            twitterHandle,
-            instagramHandle,
-            images: imagePaths,
-        });
+//         const newUser = new UserModel({
+//             name,
+//             email,
+//             password: hashedPassword,
+//             twitterHandle,
+//             instagramHandle,
+//             images: imagePaths,
+//         });
 
-        const savedUser = await newUser.save();
-        res.status(201).json(savedUser);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: error.message });
-    }
+//         const savedUser = await newUser.save();
+//         res.status(201).json(savedUser);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: error.message });
+//     }
+// });
+app.post('/signup', async (req, res) => {
+  try {
+    // Your signup logic here
+    res.status(201).json({ message: 'Signup successful!' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
+
 
 app.post("/login", async (req, res) => {
     try {
