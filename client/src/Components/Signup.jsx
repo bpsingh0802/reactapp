@@ -30,7 +30,7 @@ function SignUp() {
         });
 
         axios
-            .post("http://reactapp-qdzf.vercel.app/signup", formData, {
+            .post("https://reactapp-qdzf.vercel.app/signup", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
