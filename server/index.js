@@ -8,7 +8,27 @@ const MongoStore = require("connect-mongo");
 const UserModel = require("./model/User");
 const multer = require("multer");
 const path = require('path');
+app.use(express.json());
 
+// CORS Configuration
+app.use(cors({
+    origin: 'https://reactapp-c6wk.vercel.app', // Your frontend's URL
+    credentials: true, // Allow credentials like cookies, Authorization headers, etc.
+}));
+
+// Routes
+app.post('/signup', (req, res) => {
+    res.json({ message: 'CORS configuration is working!' });
+});
+
+// Handle Preflight Requests
+app.options('/signup', cors({
+    origin: 'https://reactapp-c6wk.vercel.app',
+    credentials: true,
+}));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 dotenv.config();
@@ -19,6 +39,8 @@ app.use(cors({
     origin: 'https://reactapp-c6wk.vercel.app', // Add a comma here
     credentials: true,
 }));
+
+
 
 
 
